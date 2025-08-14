@@ -45,3 +45,61 @@ main {
 .tool-item a:hover {
     text-decoration: underline;
 }
+
+/* Estilos específicos do simulador de regex */
+.simulator-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: monospace;
+}
+
+.form-group input[type="text"]:focus {
+    outline: none;
+    border-color: #007acc;
+}
+
+.test-input {
+    transition: all 0.3s ease;
+}
+
+.test-input.match {
+    background-color: #d4edda;
+    border-color: #28a745;
+}
+
+.test-input.no-match {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #007acc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}

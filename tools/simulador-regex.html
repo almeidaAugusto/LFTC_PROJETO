@@ -5,60 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador de Expressão Regular - LFTC</title>
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        .simulator-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        .input-group {
-            margin-bottom: 1rem;
-        }
-        
-        .input-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-        
-        .input-group input {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        
-        .test-field {
-            padding: 0.5rem;
-            border: 2px solid #ccc;
-            border-radius: 4px;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .test-field.match {
-            background-color: #d4edda;
-            border-color: #28a745;
-        }
-        
-        .test-field.no-match {
-            background-color: #f8d7da;
-            border-color: #dc3545;
-        }
-        
-        .back-link {
-            display: inline-block;
-            margin-bottom: 1rem;
-            color: #4a5568;
-            text-decoration: none;
-        }
-        
-        .back-link:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -67,66 +13,65 @@
 
     <main>
         <div class="simulator-container">
-            <a href="../index.html" class="back-link">← Voltar para Home</a>
-            
-            <div class="input-group">
+            <div class="form-group">
                 <label for="regex-input">Expressão Regular:</label>
-                <input type="text" id="regex-input" placeholder="Digite sua expressão regular">
+                <input type="text" id="regex-input" placeholder="Digite sua expressão regular aqui..." />
             </div>
-            
-            <div class="input-group">
-                <label>Texto 1:</label>
-                <input type="text" id="text1" class="test-field" placeholder="Digite o primeiro texto">
+
+            <div class="form-group">
+                <label for="test-input1">Texto 1:</label>
+                <input type="text" id="test-input1" class="test-input" placeholder="Digite o primeiro texto para testar..." />
             </div>
-            
-            <div class="input-group">
-                <label>Texto 2:</label>
-                <input type="text" id="text2" class="test-field" placeholder="Digite o segundo texto">
+
+            <div class="form-group">
+                <label for="test-input2">Texto 2:</label>
+                <input type="text" id="test-input2" class="test-input" placeholder="Digite o segundo texto para testar..." />
             </div>
+
+            <a href="../index.html" class="back-link">← Voltar para Home</a>
         </div>
     </main>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        function testRegex() {
             const regexInput = document.getElementById('regex-input');
-            const text1 = document.getElementById('text1');
-            const text2 = document.getElementById('text2');
-            
-            function testRegex() {
-                const regexPattern = regexInput.value;
-                
-                if (!regexPattern) {
-                    text1.className = 'test-field';
-                    text2.className = 'test-field';
-                    return;
-                }
-                
-                try {
-                    const regex = new RegExp(regexPattern);
+            const testInput1 = document.getElementById('test-input1');
+            const testInput2 = document.getElementById('test-input2');
+
+            const regexValue = regexInput.value;
+            const testValue1 = testInput1.value;
+            const testValue2 = testInput2.value;
+
+            try {
+                if (regexValue) {
+                    const regex = new RegExp(regexValue);
                     
-                   
-                    if (regex.test(text1.value)) {
-                        text1.className = 'test-field match';
+                    // Teste 1
+                    if (regex.test(testValue1)) {
+                        testInput1.className = 'test-input match';
                     } else {
-                        text1.className = 'test-field no-match';
+                        testInput1.className = 'test-input no-match';
                     }
-                    
-                    
-                    if (regex.test(text2.value)) {
-                        text2.className = 'test-field match';
+
+                    // Teste 2
+                    if (regex.test(testValue2)) {
+                        testInput2.className = 'test-input match';
                     } else {
-                        text2.className = 'test-field no-match';
+                        testInput2.className = 'test-input no-match';
                     }
-                } catch (e) {
-                    text1.className = 'test-field';
-                    text2.className = 'test-field';
+                } else {
+                    testInput1.className = 'test-input';
+                    testInput2.className = 'test-input';
                 }
+            } catch (e) {
+                testInput1.className = 'test-input';
+                testInput2.className = 'test-input';
             }
-            
-            regexInput.addEventListener('input', testRegex);
-            text1.addEventListener('input', testRegex);
-            text2.addEventListener('input', testRegex);
-        });
+        }
+
+        document.getElementById('regex-input').addEventListener('input', testRegex);
+        document.getElementById('test-input1').addEventListener('input', testRegex);
+        document.getElementById('test-input2').addEventListener('input', testRegex);
     </script>
 </body>
 </html>
