@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Gramática Regular - LFTC</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Simulador de Gramática Regular (Direita-linear)</h1>
+    </header>
+
+    <main>
+        <div class="simulator-container">
+            <a href="../index.html" class="back-link">← Voltar para Home</a>
+
+            <div class="form-group">
+                <label for="grammar-input">Gramática (use apenas produções direita-lineares):</label>
+                <textarea id="grammar-input" rows="6" placeholder="Exemplo:
+S -> aA | b | ε
+A -> aA | b"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="test-g1">Texto 1:</label>
+                <input type="text" id="test-g1" class="test-input" placeholder="Digite o primeiro texto...">
+            </div>
+
+            <div class="form-group">
+                <label for="test-g2">Texto 2:</label>
+                <input type="text" id="test-g2" class="test-input" placeholder="Digite o segundo texto...">
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/simulador-gramatica.js"></script>
+</body>
+</html>
