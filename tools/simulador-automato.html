@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Autômato Finito - LFTC</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- jsPlumb (CDN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.15.6/js/jsplumb.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Simulador de Autômato Finito</h1>
+    </header>
+
+    <main>
+        <div class="simulator-container">
+            <a href="../index.html" class="back-link">← Voltar para Home</a>
+
+            <div class="form-group form-inline">
+                <label for="mode">Modelo:</label>
+                <select id="mode">
+                    <option value="nfa">NFA (ε permitido)</option>
+                    <option value="dfa">DFA</option>
+                </select>
+
+                <button id="btn-add-state">Adicionar estado</button>
+                <button id="btn-toggle-initial">Marcar como inicial</button>
+                <button id="btn-toggle-final">Alternar final</button>
+                <button id="btn-del-state">Excluir estado</button>
+                <button id="btn-edge-mode" aria-pressed="false">Modo transição: Desligado</button>
+            </div>
+
+            <div class="form-group form-inline">
+                <label for="input-string">Entrada:</label>
+                <input type="text" id="input-string" class="test-input" placeholder="Digite a palavra de entrada...">
+                <button id="btn-run">Executar</button>
+                <button id="btn-step">Passo</button>
+                <button id="btn-clear">Limpar execução</button>
+                <span id="result" aria-live="polite" class="result"></span>
+            </div>
+
+            <output id="messages" aria-live="polite" class="messages"></output>
+
+            <div id="automato-canvas">
+                
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/simulador-automato.js"></script>
+  </body>
+</html>

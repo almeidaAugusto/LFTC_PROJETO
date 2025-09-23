@@ -10,4 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
     simuladorGramatica.className = 'tool-item';
     simuladorGramatica.innerHTML = '<a href="tools/simulador-gramatica.html">Simulador de Gramática Regular (Direita)</a>';
     toolsList.appendChild(simuladorGramatica);
+
+    const simuladorAutomato = document.createElement('div');
+    simuladorAutomato.className = 'tool-item';
+    simuladorAutomato.innerHTML = '<a href="tools/simulador-automato.html">Simulador de Autômato Finito</a>';
+    toolsList.appendChild(simuladorAutomato);
 });

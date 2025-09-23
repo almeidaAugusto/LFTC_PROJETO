@@ -114,3 +114,104 @@ main {
 .back-link:hover {
     text-decoration: underline;
 }
+
+
+#automato-canvas {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    background: #fff;
+    overflow: auto;
+}
+
+.form-inline {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.result {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.messages {
+    display: block;
+    margin-bottom: 10px;
+    color: #4a5568;
+}
+
+.state-node {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid #4a5568;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    cursor: move;
+}
+
+.state-node:focus { outline: 3px solid #80bdff; outline-offset: 2px; }
+.edge-label { background:#fff; padding:2px 6px; border:1px solid #ddd; border-radius:6px; color:#4a5568; font-family: monospace; }
+
+
+.state-node { transition: box-shadow .2s ease, border-color .2s ease, background .2s ease; }
+.state-active { background: #fffbe6 !important; box-shadow: 0 0 0 3px #ffd54f77 !important; }
+.state-selected { outline: 3px solid #ff9800; outline-offset: 2px; }
+.state-pending { outline: 3px dashed #007acc; outline-offset: 2px; }
+.state-initial { box-shadow: 0 0 0 4px #007acc55, 0 0 12px #007acc33; }
+.state-initial::before { content: '→'; position: absolute; left: -16px; font-weight: 900; color: #007acc; }
+.state-final { border-color: #28a745 !important; box-shadow: 0 0 0 4px #28a74555 inset, 0 0 0 2px #28a745; }
+.state-final::after { content: '★'; position: absolute; top: -12px; right: -12px; color: #28a745; font-size: 14px; }
+.jtk-connector.edge-active path { stroke: #ff9800 !important; stroke-width: 3 !important; }
+.edge-label .sym-active { background:#ffe0b2; border-radius:4px; padding:0 3px; }
+
+
+button {
+    appearance: none;
+    border: 1px solid #4a5568;
+    background: #4a5568;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background .2s ease, border-color .2s ease, transform .02s ease;
+}
+
+button:hover { background: #3b475a; border-color: #3b475a; }
+button:active { transform: translateY(1px); }
+button:disabled { background: #a0aec0; border-color: #a0aec0; cursor: not-allowed; }
+
+
+#btn-run { background: #2f855a; border-color: #2f855a; }
+#btn-run:hover { background: #276749; border-color: #276749; }
+
+#btn-step { background: #ff9800; border-color: #ff9800; color:#1a202c; }
+#btn-step:hover { background: #fb8c00; border-color: #fb8c00; }
+
+#btn-clear, #btn-del-state { background: #e53e3e; border-color: #e53e3e; }
+#btn-clear:hover, #btn-del-state:hover { background: #c53030; border-color: #c53030; }
+
+#btn-add-state { background: #007acc; border-color: #007acc; }
+#btn-add-state:hover { background: #006bb3; border-color: #006bb3; }
+
+
+#btn-edge-mode[aria-pressed="true"] { background: #007acc; border-color: #007acc; }
+
+
+select {
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    padding: 6px 8px;
+    background: #fff;
+}
+select:focus { border-color: #007acc; outline: none; }
+
+.form-inline > label { margin-right: 8px; color: #4a5568; font-weight: 600; }
