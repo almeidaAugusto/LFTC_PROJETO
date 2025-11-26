@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Máquina Norma - LFTC</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Simulador de Máquina Norma</h1>
+    </header>
+
+    <main>
+        <div class="simulator-container">
+            <a href="../index.html" class="back-link">← Voltar para Home</a>
+            <output id="norma-feedback" class="messages" aria-live="polite"></output>
+
+            <section class="section-card">
+                <h2>Registradores</h2>
+                <p>Use inteiros positivos ou negativos e aplique para sincronizar com a
+                    máquina.</p>
+                <div class="form-group">
+                    <div class="register-grid">
+                        <div class="form-inline">
+                            <label for="reg-A">A:</label>
+                            <input type="number" id="reg-A" value="0">
+                            <label for="reg-B">B:</label>
+                            <input type="number" id="reg-B" value="0">
+                        </div>
+                        <div class="form-inline">
+                            <label for="reg-C">C:</label>
+                            <input type="number" id="reg-C" value="0">
+                            <label for="reg-D">D:</label>
+                            <input type="number" id="reg-D" value="0">
+                        </div>
+                    </div>
+                    <button type="button" id="btn-apply-registers">Aplicar registradores</button>
+                </div>
+            </section>
+
+            <section class="section-card">
+                <h2>Estado atual</h2>
+                <table id="tabela-registradores" class="table-simple">
+                    <thead>
+                        <tr>
+                            <th>Registrador</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <section class="section-card">
+                <h2>Adição entre registradores</h2>
+                <div class="form-group">
+                    <h3>Sem preservar conteúdo</h3>
+                    <p>Some o registrador origem no destino e zere a origem (útil para representar positivos/negativos).
+                    </p>
+                    <div class="form-inline">
+                        <label for="add-np-source">Origem:</label>
+                        <select id="add-np-source">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                        <label for="add-np-target">Destino:</label>
+                        <select id="add-np-target">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                        <button type="button" id="btn-add-np">Executar</button>
+                    </div>
+                    <output id="add-np-output" class="result-block" aria-live="polite"></output>
+                </div>
+
+                <div class="form-group">
+                    <h3>Preservando conteúdo</h3>
+                    <p>Some sem perder o valor do registrador origem (usa auxiliares).
+                    </p>
+                    <div class="form-inline">
+                        <label for="add-preserve-source">Origem:</label>
+                        <select id="add-preserve-source">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                        <label for="add-preserve-target">Destino:</label>
+                        <select id="add-preserve-target">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                        <button type="button" id="btn-add-preserve">Executar</button>
+                    </div>
+                    <output id="add-preserve-output" class="result-block" aria-live="polite"></output>
+                </div>
+            </section>
+
+            <section class="section-card">
+                <h2>Multiplicação</h2>
+                <p>Multiplique dois registradores e grave o resultado no destino (macro AxB usando auxiliares).</p>
+                <div class="form-group">
+                    <div class="form-inline">
+                        <label for="mul-op1">Operando 1:</label>
+                        <select id="mul-op1">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                        <label for="mul-op2">Operando 2:</label>
+                        <select id="mul-op2">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                        <label for="mul-dest">Destino:</label>
+                        <select id="mul-dest">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                        <button type="button" id="btn-multiply">Executar</button>
+                    </div>
+                    <output id="mul-output" class="result-block" aria-live="polite"></output>
+                </div>
+            </section>
+
+            <section class="section-card">
+                <h2>Testes de comparação</h2>
+                <div class="form-group">
+                    <h3 class="section-subtitle">Comparação A &lt; B</h3>
+                    <div class="form-inline">
+                        <label for="cmp-lt-left">Registrador A:</label>
+                        <select id="cmp-lt-left">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                        <label for="cmp-lt-right">Registrador B:</label>
+                        <select id="cmp-lt-right">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                        <button type="button" id="btn-compare-lt">Testar</button>
+                    </div>
+                    <output id="cmp-lt-output" class="result-block" aria-live="polite"></output>
+                </div>
+                <div class="form-group">
+                    <h3 class="section-subtitle">Comparação A ≤ B</h3>
+                    <div class="form-inline">
+                        <label for="cmp-le-left">Registrador A:</label>
+                        <select id="cmp-le-left">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                        <label for="cmp-le-right">Registrador B:</label>
+                        <select id="cmp-le-right">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                        <button type="button" id="btn-compare-le">Testar</button>
+                    </div>
+                    <output id="cmp-le-output" class="result-block" aria-live="polite"></output>
+                </div>
+            </section>
+
+            <section class="section-card">
+                <h2>Teste de número primo</h2>
+                <div class="form-group">
+                    <div class="form-inline">
+                        <label for="prime-register">Registrador:</label>
+                        <select id="prime-register">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                        <button type="button" id="btn-prime">Testar</button>
+                    </div>
+                    <output id="prime-output" class="result-block" aria-live="polite"></output>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="../js/simulador-norma.js"></script>
+</body>
+
+</html>

@@ -5,4 +5,4 @@ Repositório de exercícios da disciplina de Linguagens Formais e Teoria da Comp
 - Simulador de Expressão Regular
 - Simulador de Gramática Regular (direita-linear)
 - Simulador de Autômato Finito (NFA/DFA)
-
+- Simulador maquina de norma

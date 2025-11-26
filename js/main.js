@@ -15,4 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
     simuladorAutomato.className = 'tool-item';
     simuladorAutomato.innerHTML = '<a href="tools/simulador-automato.html">Simulador de Autômato Finito</a>';
     toolsList.appendChild(simuladorAutomato);
+
+    const simuladorNorma = document.createElement('div');
+    simuladorNorma.className = 'tool-item';
+    simuladorNorma.innerHTML = '<a href="tools/simulador-norma.html">Simulador de Máquina Norma</a>';
+    toolsList.appendChild(simuladorNorma);
 });
